@@ -4,7 +4,7 @@ date: 2025-01-25 00:53:05
 tags: data-structures
 ---
 
-Note: the current template may not render LaTeX math equations correctly. You may checkout the original markdown file and use your own markdown reader to read this article. I'm sorry for that and I will fix this as soon as possible.
+Note: the current template may not render LaTeX math equations correctly. You may checkout [the original markdown file](https://github.com/patrhez/patrhez.github.io/blob/main/source/_posts/HyperLogLog%E5%8E%9F%E7%90%86%E6%B5%85%E6%9E%90.md) and use your own markdown reader to read this article. I'm sorry for that and I will fix this as soon as possible.
 
 
 # 如何从统计网页UV？
