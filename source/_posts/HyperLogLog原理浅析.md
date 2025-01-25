@@ -53,6 +53,9 @@ $\rho = i$ 的概率是$1/2^i$.
 
 在均匀随机的情况下，一件事发生的概率为$1/2^i$，其平均需要重复$2^i$次才会出现。也就是说，当我们有一个元素使得$\rho_i = \rho_{max}$，平均来说就意味着集合中不同的元素有$2^{\rho_{max}}$个。
 
+![probabilistic-counting](../images/hyperloglog/probabilistic-counting.png)
+
+如果所示，注意到柠檬对应的hash为1001 1111 0001 0000的$\rho_{max} = 5$，因此我们得到$E = 2^5 = 32$
 
 ### 更进一步
 
@@ -70,6 +73,9 @@ $$A = \frac{\sum_{i=1}^{m}\rho_{i,max}}{m}$$
 
 $$E = m \times E_{bucket} = m \times 2 ^ {\frac{\sum_{i=1}^{m}\rho_{i,max}}{m}}$$.
 
+![stochastic-averaging](../images/hyperloglog/stochastic-averaging.png)
+
+如果所示，在我们的例子中，$b=2$, $m=4$，每个桶的$\rho_{max}$分别为2，2，5，1，因此$A = (2 + 2 + 5 + 1)/ 4 = 2.5$，$E_{bucket} = 2^{2.5} \approx 5.66$, $E = m * E_{bucket} = 4 ^ 5.66 = 22.64$。已经比32更加靠近实际的值7了！
 
 ### LogLog
 
@@ -78,6 +84,8 @@ LogLog算法引入一个修正因子来规范化上面的结果：
 $$E = \widetilde{a}_m \times m \times 2 ^ {\frac{\sum_{i=1}^{m}\rho_{i,max}}{m}}$$,
 
 其中$\widetilde{a}_m \sim 0.39701 - \frac{2\pi^2 + (\mathrm{ln}2)^2}{48m}$, 对于实际情况，即$ m > 64$，我们可以简单取$\widetilde{a}_m = 0.39701$。
+
+应用到我们的例子中，$\widetilde{a}_m \approx 0.292$, 因此$0.292 \times 22.6 = 6.6$。
 
 经过数学上的统计分析，LogLog的相对误差约等于$1.3/\sqrt {m}$。基于此，通常的实现中取$m = 2^{14}$，相对误差为$1.3/\sqrt{2^{14}} = 1.01\%$，该值和数据集大小无关!
 
@@ -107,6 +115,16 @@ $$ E = \alpha_m \times m \times E_{bucket} = \frac{a_{m}m^2} {\sum_{i=1}^{m} 2 ^
 $$ \alpha_m = \left(m \int_{0}^{\infty} \left(\mathrm{log}_{2} \left(\frac{2 + u}{1 + u}\right)\right)^{m}\mathrm{d}u\right)^{-1}$$
 
 对于$m > 128$，可以取$\alpha_m = 0.723 / (1 + 1.079/m)$.
+
+回忆四个桶的$\rho_{max}$分别问2，2，5，1，因此
+  
+$$ E_{bucket} = \frac{4} {\left(\frac{1}{2}\right)^2 + 
+  \left(\frac{1}{2}\right)^2  + \left(\frac{1}{2}\right)^5 + 
+  \left(\frac{1}{2}\right)^1} = \frac{4}{\frac{33}{32}} \approx 3.88 $$
+
+因为$\alpha_4 = 0.541$，最终结果为$E = 0.541 \times 4 \times 3.88  = 8.39$。
+
+虽然对这个例子来说，其结果不如LogLog，但是当数据量大起来之后，HyperLogLog能够有更好的相对误差: $1.04/\sqrt{m}$（LogLog的分子是1.3）。
 
 
 至此，我们已经得到了HyperLogLog的朴素估计值。我们来从直觉上分析一下其正确性。
