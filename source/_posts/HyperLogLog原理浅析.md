@@ -4,7 +4,7 @@ date: 2025-01-25 00:53:05
 tags: data-structures
 ---
 
-Note: the current template may not render LaTeX math equations correctly. You may checkout the original markdown file and use your own markdown reader to read this article. I'm sorry for that and I will fix this as soon as possible.
+Note: the current template may not render LaTeX math equations correctly. You may checkout [the original markdown file](https://github.com/patrhez/patrhez.github.io/blob/main/source/_posts/HyperLogLog%E5%8E%9F%E7%90%86%E6%B5%85%E6%9E%90.md) and use your own markdown reader to read this article. I'm sorry for that and I will fix this as soon as possible.
 
 
 # 如何从统计网页UV？
@@ -71,8 +71,10 @@ $$A = \frac{\sum_{i=1}^{m}\rho_{i,max}}{m}$$
 
 我们用这个值来估计一个桶基数，则有：$E_{bucket} = 2^A$. 那么总的基数为
 
-$$E = m \times E_{bucket} = m \times 2 ^ {\frac{\sum_{i=1}^{m}\rho_{i,max}}{m}}$$.
+$$ E = m \times E_{bucket} = m \times 2 ^ {\frac{\sum_{i=1}^{m}\rho_{i,max}}{m}}. $$
 
+
+回到我们的例子：
 ![stochastic-averaging](../images/hyperloglog/stochastic-averaging.png)
 
 如果所示，在我们的例子中，$b=2$, $m=4$，每个桶的$\rho_{max}$分别为2，2，5，1，因此$A = (2 + 2 + 5 + 1)/ 4 = 2.5$，$E_{bucket} = 2^{2.5} \approx 5.66$, $E = m * E_{bucket} = 4 ^ 5.66 = 22.64$。已经比32更加靠近实际的值7了！
@@ -81,7 +83,7 @@ $$E = m \times E_{bucket} = m \times 2 ^ {\frac{\sum_{i=1}^{m}\rho_{i,max}}{m}}$
 
 LogLog算法引入一个修正因子来规范化上面的结果：
 
-$$E = \widetilde{a}_m \times m \times 2 ^ {\frac{\sum_{i=1}^{m}\rho_{i,max}}{m}}$$,
+$$E = \widetilde{a}_m \times m \times 2 ^ {\frac{\sum_{i=1}^{m}\rho_{i,max}}{m}},$$
 
 其中$\widetilde{a}_m \sim 0.39701 - \frac{2\pi^2 + (\mathrm{ln}2)^2}{48m}$, 对于实际情况，即$ m > 64$，我们可以简单取$\widetilde{a}_m = 0.39701$。
 
@@ -203,7 +205,7 @@ $$E\left(\sum_{i=1}^{m} X_{i} = 1\right) = \sum_{i=1}^{m} E\left(X_{i} = 1\right
 |           | count  | error     |
 |-----------|--------|-----------|
 | My HLL    | 987141 | 0.2860\%  |
-| Redis HLL | 979807 | 1.0194 \% |
+| Redis HLL | 979807 | 1.0194\% |
 
 
 # References
