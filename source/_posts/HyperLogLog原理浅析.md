@@ -196,7 +196,7 @@ $$E\left(\sum_{i=1}^{m} X_{i} = 1\right) = \sum_{i=1}^{m} E\left(X_{i} = 1\right
 
 ## 我的实践
 
-我按照原论文中的描述[实现了HyperLogLog算法](https://git.xiaojukeji.com/hepengzheng/hyperloglog)（只做了简单改动）：，欢迎Review。
+我按照原论文中的描述[实现了HyperLogLog算法](https://github.com/patrhez/hyperloglog)（只做了简单改动）：，欢迎Review。
 
 程序生成了100万个字符串作为输入，并控制重复的字符串在1万个左右，结果如下：
 
