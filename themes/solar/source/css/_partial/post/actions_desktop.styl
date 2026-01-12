@@ -1,6 +1,6 @@
 #header-post
   position: fixed
-  top: 30vh // 50vh
+  top: 15vh // 50vh
   right: 2rem
   display: block
   float: right
@@ -91,31 +91,63 @@
       display: block
   #toc
     clear: both
-    text-align: right
-    padding-top: 1rem
-    width: 17rem
+    text-align: left
+    padding: 1rem
+    width: 20rem
     float: right
-    a:hover
-      color: $color-link
-    .toc-level-1
-      //display: none
+    background: lighten($color-background, 5%)
+    border-radius: 5px
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3)
+    margin-top: 1rem
+    max-height: 60vh
+    overflow-y: auto
+    
+    ol
+      list-style: none
+      padding: 0
+      margin: 0
+      
+    .toc-child
+      padding-left: 1.5rem
+      
+    li
+      margin-bottom: 0.5rem
+      line-height: 1.4
+
+    a
       color: $color-text
+      transition: color 0.2s
+      display: block // Improved hit area and wrapping
+      &:hover
+        color: $color-link
+
+    .toc-level-1
+      font-weight: 600
+      font-size: 1rem
+      color: $color-text
+      margin-top: 1rem
+      &:first-child
+        margin-top: 0
+    
     .toc-level-2
-      font-size: 0.9rem
+      font-size: 0.95rem
       color: $color-text
       &:before
         content: "#"
         color: $color-accent
+        margin-right: 5px
+        
     .toc-level-3
-      font-size: 0.8rem
-      color: #b3b3b3
+      font-size: 0.9rem
+      color: darken($color-text, 15%)
+
     .toc-level-4
-      font-size: 0.5rem
-      color: #666 
-    .toc-level-5
+      font-size: 0.85rem
+      color: darken($color-text, 30%)
+      
+    .toc-level-5, .toc-level-6
       display: none
-    .toc-level-6
-      display: none
+
     .toc-number
       display: none
 
