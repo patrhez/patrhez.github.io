@@ -1,0 +1,57 @@
+#title in header
+title: "Hi Folks."
+
+#main info
+#owner
+owner: "Patrick"
+email: 
+info: "Everything should be made as simple as possible, but not simpler. ——Albert Einstein"
+#description
+desc: "Patrick He' Notes"
+
+#menu
+menu:
+  Archives: /archives
+  Tags: /tags
+
+#index/main page max show posts (in number)
+max_post: 10
+
+# Colors use hex color without #
+# Theme color
+tcolor: 0FA0CE
+
+# Define path to user css
+#(could be also located outside of theme)
+# Relative to source/ directory
+usercss: css/user.css
+
+# social profile at the footer/bottom
+footer: true
+placename: Earth
+placelink: https://en.wikipedia.org/wiki/Earth
+github: 
+linkedin: 
+twitter: 
+instagram: 
+stackoverflow: 
+
+# Misc
+nanobar: /js/nanobar.min.js
+switch_light: ☀️
+switch_dark: 🌑
+
+# Picture enlargement
+picjs: /js/pic.min.js
+
+# favicon
+favicon: /images/favicon.png
+# thumbnail
+thumbnail: /images/thumbnail.jpg
+
+article:
+  thumbnail: true
+
+# DISQUS comments (sign up to Disqus to get disqus_shortname)
+disqus_enabled: false
+disqus_shortname: 

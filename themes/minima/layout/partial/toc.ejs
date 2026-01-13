@@ -1,0 +1,15 @@
+<% if (is_post()) { %>
+  <% var tocContent = toc(page.content, {list_number: false, class: 'toc-list'}); %>
+  <% if (tocContent && tocContent.trim() !== '') { %>
+  <div class="toc-toggle" id="toc-toggle" title="Toggle Table of Contents">
+    <span class="toc-toggle-icon">☰</span>
+  </div>
+  <div id="post-toc" class="post-toc toc-expanded">
+    <div class="toc-header">
+      <strong class="toc-title">Table of Contents</strong>
+      <button class="toc-close" id="toc-close" title="Close">×</button>
+    </div>
+    <%- tocContent %>
+  </div>
+  <% } %>
+<% } %>
