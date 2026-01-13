@@ -13,7 +13,7 @@ timezone: 'Asia/Shanghai'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://patrhez.github.io
+url: https://patrhez.github.io
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -40,20 +40,33 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true #set it to true for SEO thumbnails
 relative_link: false
 future: true
 syntax_highlighter: highlight.js
 highlight:
-  line_number: true
+  enable: false #set it to false
+  line_number: false
   auto_detect: false
   tab_replace: ''
-  wrap: true
+  wrap: false #false
   hljs: false
 prismjs:
+  enable: true #set it to true
   preprocess: true
-  line_number: true
+  line_number: true #optional
   tab_replace: ''
+
+# Marked renderer configuration
+marked:
+  gfm: true
+  breaks: false
+  pedantic: false
+  sanitize: false
+  smartLists: true
+  smartypants: true
+  modifyAnchors: ''
+  autolink: true
 
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
@@ -96,7 +109,14 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: solar
+theme: minima
+
+# Search
+search:
+  path: search.json
+  field: post
+  format: json
+  limit: 10000
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
