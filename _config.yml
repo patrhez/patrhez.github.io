@@ -43,18 +43,18 @@ render_drafts: false
 post_asset_folder: true #set it to true for SEO thumbnails
 relative_link: false
 future: true
-syntax_highlighter: highlight.js
+syntax_highlighter: prismjs
 highlight:
-  enable: false #set it to false
+  enable: false
   line_number: false
   auto_detect: false
   tab_replace: ''
-  wrap: false #false
+  wrap: false
   hljs: false
 prismjs:
-  enable: true #set it to true
+  enable: true
   preprocess: true
-  line_number: true #optional
+  line_number: true
   tab_replace: ''
 
 # Marked renderer configuration

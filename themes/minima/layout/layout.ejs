@@ -97,7 +97,8 @@
   <%- css('css/normalize.css') %>
   <%- css('css/skeleton.css') %>
   <%- css('css/custom.css') %>
-  <%- css('css/prism-dark.css') %>
+  <!-- Prism.js theme -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
   <%- css('css/prism-line-numbers.css') %>
   <!-- User css -->
   <% if (theme.usercss) { %>
@@ -176,6 +177,14 @@
   <% if (is_post()) { %>
   <script src="/js/toc.js"></script>
   <% } %>
+
+  <!-- Prism.js for syntax highlighting -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script>
+    Prism.highlightAll();
+  </script>
 
 </body>
 
