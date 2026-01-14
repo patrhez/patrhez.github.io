@@ -28,8 +28,8 @@ usercss: css/user.css
 
 # social profile at the footer/bottom
 footer: true
-placename: Earth
-placelink: https://en.wikipedia.org/wiki/Earth
+placename: Github
+placelink: https://github.com/patrhez
 github: 
 linkedin: 
 twitter: 
